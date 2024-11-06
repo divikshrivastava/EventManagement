@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAuth0 } from "@auth0/auth0-react";
 import './index.css'
 
 const OrganizerPage = () => {
@@ -84,11 +85,15 @@ const OrganizerPage = () => {
     )
   }
 
+  const { logout } = useAuth0();
   return (
     <div className="org-container">
       <div className="header">
         <h1>Organize Sessions</h1>
-        <button>+ Event</button>
+        <div style={{ "display": "flex" }}>
+          <button>+ Event</button>
+          <button onClick={logout}>Logout</button>
+        </div>
       </div>
       <div className="list">
         <div className="completed-list">
