@@ -1,0 +1,40 @@
+.login-container {
+    border-radius: 45% 29% 32% 25% / 64% 64% 70% 91%;
+
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+
+    width: fit-content;
+    padding: 3rem;
+    color: black;
+    animation: br-change 4s ease-in-out infinite;
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container .login-btn{
+    width: fit-content;
+}
+
+
+
+@keyframes br-change {
+    0% {
+        border-radius: 30% 70% 70% 30% / 23% 41% 59% 77%;
+    }
+
+    50% {
+        border-radius: 45% 29% 32% 25% / 64% 64% 70% 91%;
+    }
+
+    100% {
+        border-radius: 30% 70% 70% 30% / 23% 41% 59% 77%;
+    }
+}

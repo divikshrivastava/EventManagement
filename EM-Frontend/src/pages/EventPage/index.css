@@ -1,0 +1,32 @@
+.event-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-container .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.event-container .footer .left {
+    width: 100%;
+}
+
+.event-container .footer .right-list {
+    width: 100%;
+}
+
+.person-img{
+    width: 50px;
+}
+
+#person{
+    fill: green;
+}
+
+td {
+    border: 1px solid black;
+}
