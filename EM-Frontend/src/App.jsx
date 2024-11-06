@@ -27,7 +27,9 @@ function App() {
             <Route path="/" element={
               user['https://eventplan/roles'].includes('organizer') ? <OrganizerPage /> :
                 user['https://eventplan/roles'].includes('speaker') ? <EventPage /> :
-                  <button onClick={logout}>Lougout</button>
+                  <>
+                  Hey Attendee,
+                  <button onClick={logout}>Lougout</button></>
             } />
           </Routes>
         </Router>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAuth0 } from "@auth0/auth0-react";
 import './index.css'
 
 const EventPage = () => {
@@ -37,11 +38,16 @@ const EventPage = () => {
 
   const totalAttendees = 30
   const attended = 10
+  const { logout } = useAuth0();
+
   return (
     <div className="event-container">
       <div className='header'>
         <h1>Event 1</h1>
-        <h3>Speaker - Speaker1</h3>
+        <div style={{ "display": "flex", justifyContent: 'center', gap: "10px", alignItems:"center" }}>
+          <h3>Speaker - Speaker1</h3>
+          <button onClick={logout}>Logout</button>
+        </div>
       </div>
       <div className="footer">
         <div className="left">
@@ -49,9 +55,9 @@ const EventPage = () => {
             Array.from({ length: totalAttendees }, (_, index) => {
               return (
                 index <= attended ?
-                  <img  src="/green.svg" alt="person is attended" className='person-img' />
+                  <img src="/green.svg" alt="person is attended" className='person-img' />
                   :
-                  <img  src="/person.svg" alt="person is attended" className='person-img' />
+                  <img src="/person.svg" alt="person is attended" className='person-img' />
               )
             })
           }
