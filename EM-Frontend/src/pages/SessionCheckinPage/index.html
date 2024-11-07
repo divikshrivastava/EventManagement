@@ -1,0 +1,101 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendee Portal</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="badge-page-container">
+    <div class="form-container">
+      <h2>Session Check-in</h2>
+      <div class="session-list">
+        <ul>
+          <li>Session 1: Introduction to DevWorld</li>
+          <li>Session 2: Advanced React Techniques</li>
+          <li>Session 3: AI in Modern Applications</li>
+        </ul>
+      </div>
+      <input type="text" id="session-id" placeholder="Enter Session ID to Check-in">
+      <div class="buttons">
+        <button onclick="checkInSession()">Check-in</button>
+      </div>
+    </div>
+    
+    <div class="nft">
+      <div class="main">
+        <h2>Event Buddy</h2>
+        <div class="chat-window" id="chat-window">
+          <div class="chat-message">Event Buddy: Welcome to DevWorld! How can I assist you today?</div>
+        </div>
+        <input type="text" id="chat-input" placeholder="Ask me anything...">
+        <div class="buttons">
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check-in function
+    function checkInSession() {
+      const sessionId = document.getElementById("session-id").value;
+      if (sessionId) {
+        alert(`Checked in to session: ${sessionId}`);
+      } else {
+        alert("Please enter a valid session ID.");
+      }
+    }
+
+    // Event Buddy chat functionality
+    function sendMessage() {
+      const chatInput = document.getElementById("chat-input").value;
+      const chatWindow = document.getElementById("chat-window");
+
+      if (chatInput.trim() === "") {
+        return;
+      }
+
+      const userMessage = document.createElement("div");
+      userMessage.classList.add("chat-message");
+      userMessage.textContent = `You: ${chatInput}`;
+      chatWindow.appendChild(userMessage);
+
+      // Clear the input field
+      document.getElementById("chat-input").value = "";
+
+      // Add a response from Event Buddy after 2 seconds
+      setTimeout(() => {
+        const eventBuddyMessage = document.createElement("div");
+        eventBuddyMessage.classList.add("chat-message");
+        eventBuddyMessage.textContent = chatInput.toLowerCase() === "hi" ? "Event Buddy: Hello!" : "Event Buddy: I'm here to help!";
+        chatWindow.appendChild(eventBuddyMessage);
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendee Portal</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="index.jsx" type="module"></script>
+</body>
+
+</html>

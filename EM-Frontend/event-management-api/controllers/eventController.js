@@ -72,11 +72,11 @@ exports.checkInToSession = async (req, res) => {
     const event = await getEventCollection().findOne({ 'sessions.sessionId': sessionId });
     if (event) {
       const session = event.sessions.find(s => s.sessionId === sessionId);
-      const attendee = event.attendees.find(a => a.attendeeId === attendeeId);
+      const attendee = event.attendees.find(a => a.email === attendeeId);
       if (session && attendee) {
         session.attendees.push(attendee);
         await getEventCollection().updateOne(
-          { _id: ObjectId(event._id) },
+          { _id: event._id },
           { $set: { sessions: event.sessions } }
         );
         res.status(200).json({ success: true, message: 'Checked in successfully' });

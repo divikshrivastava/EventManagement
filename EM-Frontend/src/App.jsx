@@ -7,6 +7,7 @@ import OrganizerPage from './pages/OrganizerPage';
 import EventPage from './pages/EventPage';
 import CustomBadgePage from './pages/CustomizeBadgePage';
 import CreateEventPage from './pages/CreateEventPage';
+import AttendeePortal from './pages/SessionCheckinPage';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path='/speaker' element={<EventPage />} />
             <Route path='/custombadge' element={<CustomBadgePage />} />
             <Route path='/newses' element={<CreateEventPage />} />
+            <Route path='/attendee' element={<AttendeePortal />} />
           </Routes>
         </Router>
 
