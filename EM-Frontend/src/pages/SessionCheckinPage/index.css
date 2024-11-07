@@ -1,16 +1,3 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    background-color: rgb(22, 20, 24);
-    color: #eee;
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  
   .badge-page-container {
     margin: 0;
     color: #eee;
@@ -18,13 +5,11 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    min-height: 100vh;
     width: 100%;
-    padding: 2rem;
     gap: 20px;
     flex-wrap: wrap;
   }
-  
+
   .form-container {
     max-width: 320px;
     padding: 1.5rem;
@@ -34,13 +19,13 @@ body {
     text-align: center;
     color: #a89ec9;
   }
-  
+
   .form-container h2 {
     color: #f5f5f5;
     margin-bottom: 1rem;
     font-size: 1.2rem;
   }
-  
+
   .form-container input {
     margin: 0.5rem 0;
     padding: 0.7rem;
@@ -53,14 +38,14 @@ body {
     font-size: 0.9rem;
     box-sizing: border-box;
   }
-  
+
   .form-container .buttons {
     display: flex;
     gap: 0.5rem;
     margin-top: 1rem;
     justify-content: center;
   }
-  
+
   .form-container button {
     padding: 0.6rem 1.2rem;
     border: none;
@@ -72,12 +57,12 @@ body {
     box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
     transition: 0.3s ease;
   }
-  
+
   .form-container button:hover {
     background-color: #5942e9;
     box-shadow: 0 4px 20px rgba(108, 99, 255, 0.6);
   }
-  
+
   .nft {
     user-select: none;
     max-width: 400px;
@@ -92,12 +77,12 @@ body {
     overflow: hidden;
     transition: .5s all;
   }
-  
+
   .nft h2 {
     color: #f5f5f5;
     margin-bottom: 1rem;
   }
-  
+
   .chat-window {
     height: 200px;
     overflow-y: auto;
@@ -106,12 +91,12 @@ body {
     border-radius: 0.5rem;
     margin-bottom: 1rem;
   }
-  
+
   .chat-message {
     margin: 0.5rem 0;
     color: #a89ec9;
   }
-  
+
   .nft input {
     padding: 0.7rem;
     width: 100%;
@@ -123,14 +108,14 @@ body {
     font-size: 0.9rem;
     box-sizing: border-box;
   }
-  
+
   .nft .buttons {
     display: flex;
     gap: 0.5rem;
     margin-top: 1rem;
     justify-content: center;
   }
-  
+
   .nft button {
     padding: 0.6rem 1.2rem;
     border: none;
@@ -142,9 +127,8 @@ body {
     box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
     transition: 0.3s ease;
   }
-  
+
   .nft button:hover {
     background-color: #5942e9;
     box-shadow: 0 4px 20px rgba(108, 99, 255, 0.6);
   }
-  

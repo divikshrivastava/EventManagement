@@ -1,10 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
 import './index.css'
 
 const CustomBadgePage = () => {
     const { user } = useAuth0()
     const name = user.name
+
+    const nav = useNavigate()
+
+    const goToAttendee = () => {
+        nav('/attendee')
+    }
     const HookQ = [
         "I study at",
         "I work at"
@@ -36,7 +43,7 @@ const CustomBadgePage = () => {
                     onChange={(e) => setInfo(e.target.value)} />
                 <div className="buttons">
                     <button onClick={onSubmit}>Print</button>
-                    <button >Check-in</button>
+                    <button onClick={goToAttendee}>Check-in</button>
                 </div>
             </div>
             <div className="nft">
@@ -44,7 +51,7 @@ const CustomBadgePage = () => {
 
                     <img className="tokenImage"
                         src="/AWlogo.jpeg"
-                        alt="Logo"  />
+                        alt="Logo" />
                     <h2>{name}</h2>
                     <hr />
                     <h3 id="badge-title">{selectedHook} {info}</h3>
