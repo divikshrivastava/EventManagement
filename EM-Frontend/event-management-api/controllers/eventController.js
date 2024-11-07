@@ -12,6 +12,28 @@ exports.createEvent = async (req, res) => {
   }
 };
 
+// POST /event/:eventId/session - Add a new session to an existing event
+exports.addSessionToEvent = async (req, res) => {
+    try {
+      const { eventId } = req.params;
+      const session = req.body;
+      const event = await getEventCollection().findOne({ eventId });
+      if (event) {
+        event.sessions.push(session);
+        await getEventCollection().updateOne(
+          { eventId },
+          { $set: { sessions: event.sessions } }
+        );
+        res.status(200).json({ success: true, message: 'Session added successfully' });
+      } else {
+        res.status(404).json({ success: false, message: 'Event not found' });
+      }
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
+  };
+
+  
 // GET /event/:eventId - Get sessions of an event
 exports.getEventSessions = async (req, res) => {
   try {
