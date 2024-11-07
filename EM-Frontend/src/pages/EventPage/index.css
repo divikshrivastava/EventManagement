@@ -19,14 +19,24 @@
     width: 100%;
 }
 
-.person-img{
+.person-img {
     width: 50px;
 }
 
-#person{
+#person {
     fill: green;
 }
 
 td {
     border: 1px solid black;
+}
+
+@media screen and (max-width:768px) {
+    .event-container .header {
+        flex-direction: column;
+    }
+
+    .event-container .footer {
+        flex-direction: column;
+    }
 }

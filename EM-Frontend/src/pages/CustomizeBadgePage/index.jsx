@@ -43,15 +43,12 @@ const CustomBadgePage = () => {
                 <div className="main">
 
                     <img className="tokenImage"
-                        src="https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                        alt="NFT" />
-                    <h1>Dev World</h1>
+                        src="/AWlogo.jpeg"
+                        alt="Logo"  />
+                    <h2>{name}</h2>
                     <hr />
-                    <h2 id="badge-title">{name}</h2>
-                    <p id="badge-hook" className="description">Role : {user['https://eventplan/roles']}</p>
-                    <p id="badge-organization" className="description">
-                        {selectedHook} : {info}
-                    </p>
+                    <h3 id="badge-title">{selectedHook} {info}</h3>
+                    <p id="badge-hook" className="description">OPEN PASS</p>
                 </div>
             </div>
         </div>

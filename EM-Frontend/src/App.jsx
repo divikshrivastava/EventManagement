@@ -10,12 +10,7 @@ import CreateEventPage from './pages/CreateEventPage';
 
 function App() {
 
-  const { user, isAuthenticated, logout } = useAuth0();
-
-  console.log("Users details")
-  console.log(user)
-
-  isAuthenticated && console.log(user['https://eventplan/roles'].includes('organizer'))
+  const { user, isAuthenticated } = useAuth0();
 
   return (
     <div style={{ 'padding': "3rem" }}>
@@ -33,8 +28,8 @@ function App() {
             } />
             <Route path='/organizer' element={<OrganizerPage />} />
             <Route path='/speaker' element={<EventPage />} />
-            <Route path='/custombadge' element={<CustomBadgePage />} />
-            <Route path='/newses' element={<CreateEventPage />} />
+            <Route path='/custom-badge' element={<CustomBadgePage />} />
+            <Route path='/new-session' element={<CreateEventPage />} />
           </Routes>
         </Router>
 

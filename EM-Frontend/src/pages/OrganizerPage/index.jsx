@@ -1,86 +1,63 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
+import { getEventSessions } from '../../util/apiFunc';
+import { useNavigate } from "react-router-dom";
 import './index.css'
 
 const OrganizerPage = () => {
-  const eventsList = [
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event1",
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "completed"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event2",
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "progress"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event3",
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "not-started"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event4",
-      speaker: 'speaker 4',
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "not-started"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event5",
-      speaker: 'speaker 5',
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "not-started"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event6",
-      speaker: 'speaker 6',
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "not-started"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event7",
-      speaker: 'speaker 7',
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "not-started"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event8",
-      speaker: 'speaker 8',
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "not-started"
-    },
-    {
-      id: "Jiobkjsdjkn",
-      name: "Event9",
-      speaker: 'speaker 9',
-      from: "Tuesday 11 AM",
-      to: "Tuesday 5 PM",
-      status: "not-started"
-    }
-  ]
+
+  const nav = useNavigate();
+
+  const goToNewSession = () => {
+    nav("/new-session")
+  }
+
+  const goToEvent = (id) => {
+    nav("/speaker?sessionId=" + id)
+  }
+
+  const [eventsList, setEventsList] = useState([])
+
+
+  useEffect(() => {
+    getEventSessions().then((res) => {
+      const updatedSessions = res.sessions.map((session) => {
+        const currentTime = new Date();
+        const fromTime = new Date(currentTime); // Set the current date first
+        const toTime = new Date(currentTime); // Set the current date first
+
+        // Set the hours for fromTime and toTime based on the from and to values (using session.from and session.to)
+        fromTime.setHours(session.from, 0, 0, 0);  // session.from is an integer representing the hour (e.g., 3 = 3AM)
+        toTime.setHours(session.to, 0, 0, 0);      // session.to is an integer representing the hour (e.g., 13 = 1PM)
+
+        // Format from and to times for easier reading if needed
+        const from = fromTime.toUTCString();
+        const to = toTime.toUTCString();
+
+        // Determine status based on date comparison
+        if (toTime < currentTime) {
+          session.status = "completed";
+          console.log(session.name + ":" + toTime);
+        } else if (fromTime <= currentTime && currentTime <= toTime) {
+          session.status = "progress";
+        } else {
+          session.status = "not-started";
+        }
+
+        return session;
+      });
+      setEventsList(updatedSessions);
+    });
+  }, []);
+
+
 
   const Item = (event) => {
     return (
-      <div className={"item " + event.status}>
+      <div className={"item " + event.status} onClick={() => { goToEvent(event.sessionId) }}>
         <h3>{event.name}</h3>
-        <p>Speaker: {event.speaker}</p>
-        <p><b>From:</b> {event.from} <b>To:</b>{event.to} </p>
+        <p>Speaker: {event.speakerName}</p>
+        <p><b>From:</b> {event.from}</p> <p><b>To:</b>{event.to} </p>
       </div>
     )
   }
@@ -90,21 +67,21 @@ const OrganizerPage = () => {
     <div className="org-container">
       <div className="header">
         <h1>Organize Sessions</h1>
-        <div style={{ "display": "flex" }}>
-          <button>+ Event</button>
+        <div style={{ "display": "flex", gap: '20px' }}>
+          <button onClick={goToNewSession}>+ Session</button>
           <button onClick={logout}>Logout</button>
         </div>
       </div>
       <div className="list">
-        <div className="completed-list">
+        <div className="list-spot">
           <h3>Done</h3>
           {eventsList.map((event) => event.status === "completed" && Item(event))}
         </div>
-        <div className="progress-list">
+        <div className="list-spot">
           <h3>On Going</h3>
           {eventsList.map((event) => event.status === "progress" && Item(event))}
         </div>
-        <div className="not-started-list">
+        <div className="list-spot">
           <h3>Upcoming</h3>
           {eventsList.map((event) => event.status === "not-started" && Item(event))}
         </div>
