@@ -5,6 +5,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import OrganizerPage from './pages/OrganizerPage';
 import EventPage from './pages/EventPage';
+import CustomBadgePage from './pages/CustomizeBadgePage';
+import CreateEventPage from './pages/CreateEventPage';
 
 function App() {
 
@@ -27,10 +29,12 @@ function App() {
             <Route path="/" element={
               user['https://eventplan/roles'].includes('organizer') ? <OrganizerPage /> :
                 user['https://eventplan/roles'].includes('speaker') ? <EventPage /> :
-                  <>
-                  Hey Attendee,
-                  <button onClick={logout}>Lougout</button></>
+                  <CustomBadgePage />
             } />
+            <Route path='/organizer' element={<OrganizerPage />} />
+            <Route path='/speaker' element={<EventPage />} />
+            <Route path='/custombadge' element={<CustomBadgePage />} />
+            <Route path='/newses' element={<CreateEventPage />} />
           </Routes>
         </Router>
 

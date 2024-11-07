@@ -1,0 +1,20 @@
+.field {
+    margin: 10px;
+}
+
+.field input {
+    min-width: 200px;
+    min-height: 32px;
+    font-size: large;
+    margin: 10px;
+    border-radius: 8px;
+    padding: 4px;
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+.field textarea {
+    font-size: large;
+    border-radius: 8px;
+    border-color: rgba(0, 0, 0, 0.3);
+    margin: 0 10px;
+}
